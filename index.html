@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      ❤️ demo 1 ❤️
+    </title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script>
+      // create WebSocket connection
+      const socket = new WebSocket('ws://localhost:8080');
+
+      // when socket opens, send string 'client connected' to server
+      socket.addEventListener('open', () => {
+        socket.send('client connected');
+      });
+    </script>
+  </body>
+</html>
