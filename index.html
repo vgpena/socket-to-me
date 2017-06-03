@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      🤖 demo 2 🤖
+    </title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      // create socket.io connection
+      const socket = io.connect('http://localhost:8080');
+
+      // when socket opens, send a generic message to server
+      socket.on('connect', () => {
+        socket.send('client connected');
+      });
+    </script>
+  </body>
+</html>

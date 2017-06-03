@@ -1,0 +1,14 @@
+{
+    extends: "airbnb-base",
+    plugins: [
+        "import"
+    ],
+    rules: {
+      arrow-parens: [1, "always"],
+      comma-dangle: [2, "never"],
+      import/no-extraneous-dependencies: 0,
+      no-console: 1,
+      no-debugger: 1,
+      template-curly-spacing: [1, "always"]
+    }
+}
