@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      🤓 demo 4 🤓
+    </title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button id="tapButton" class="button">
+      tap me
+    </button>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      // create socket.io connection
+      const socket = io.connect('http://localhost:8080');
+      
+
+      // when this button gets clicked, send a specific event to the server.
+      document.getElementById('tapButton').addEventListener('click', () => {
+        socket.emit('tap');
+      });
+
+      socket.on('connect', () => {
+        socket.send('client connected');
+      });
+
+      socket.on('tapResponse', () => {
+        console.log('%cthe server picked up a tap', 'font-size: 12px');
+      });
+
+      socket.on('myTap', () => {
+        console.log('%cthe tap came from here', 'background: #daff0e; font-weight: bold; font-size: 14px;');
+      });
+
+      socket.on('notMyTap', () => {
+        console.log('%cthe tap came from somewhere else', 'background: #87fbf1; font-weight: bold; font-size: 14px;');
+      });
+    </script>
+  </body>
+</html>
