@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      👑 demo 5 👑
+    </title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      // create socket.io connection
+      const socket = io.connect('http://localhost:8080');
+      const touchDevice = 'ontouchend' in window;
+
+      socket.on('connect', () => {
+        socket.send('client connected');
+      });
+
+      // when a tap/click is found, send those coords to server
+      document.addEventListener(touchDevice ? 'touchend' : 'click', (e) => {
+        const event = touchDevice ? e.changedTouches[0] : e;
+        const x = (event.clientX / window.innerWidth) * 100;
+        const y = (event.clientY / window.innerHeight) * 100;
+        socket.emit('tap', { x, y }, (response) => {
+          // this function is part of an "acknowledgement" patten. More info @ https://socket.io/docs/client-api/#socket-emit-eventname-args-ack
+          console.log(`%cserver registered tap at %c${ response.cleanX }%, ${ response.cleanY }%`, 'background-color: aliceblue; font-size: 14px;', 'background-color: #ffe52c; font-weight: bold; font-size: 18px;');
+        });
+      });
+    </script>
+  </body>
+</html>
