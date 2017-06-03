@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      🏄🏻‍♀️ viewer 🏄🏻‍♀️
+    </title>
+    <link rel="stylesheet" href="viewer.css" />
+  </head>
+  <body>
+    <h1>viewer</h1>
+    <h2>controls clients connected: <span id="count">🏄🏻‍♀️</span></h2>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      // create socket.io connection in "viewer" namespace
+      const socket = io.connect('http://localhost:8080/viewer');
+
+      const countElement = document.getElementById('count');
+      socket.on('updateControlsCount', (data) => {
+        countElement.innerHTML = data;
+      });
+    </script>
+  </body>
+</html>

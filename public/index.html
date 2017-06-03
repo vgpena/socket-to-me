@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      🦄 controls 🦄
+    </title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>controls</h1>
+    <h2>controls clients connected: <span id="count">🦄</span></h2>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      // create socket.io connection
+      const socket = io.connect('http://localhost:8080/controls');
+      
+      const countElement = document.getElementById('count');
+      socket.on('updateControlsCount', (data) => {
+        countElement.innerHTML = data;
+      });
+    </script>
+  </body>
+</html>
