@@ -1,0 +1,28 @@
+body, html {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    background-color: #333;
+    color: #fff;
+    font-family: "Helvetica", sans-serif;
+    margin: 0;
+}
+
+#users-count {
+    opacity: 0.8;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    font-size: 21vw;
+    line-height: 0.75em;
+    user-select: none;
+}
+
+#feedback {
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+}
