@@ -1,0 +1,15 @@
+body {
+  margin: 2rem;
+  color: #333;
+  font-family: "Helvetica", sans-serif;
+}
+
+button {
+  -webkit-appearance: none;
+  border: none;
+  font-family: "Helvetica", sans-serif;
+  font-size: 3rem;
+  cursor: pointer;
+  background-color: #f7d4dd;
+  padding: 0.5em;
+}
